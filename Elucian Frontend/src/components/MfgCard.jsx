@@ -37,7 +37,7 @@ const MfgCard = ({ data }) => {
       </div>
 
       {/* White Content Panel - Overlaps image with margin top for rounded corners visibility */}
-      <div className="bg-white rounded-2xl shadow-lg transition-all duration-500 hover:shadow-xl h-44 group-hover:h-24 overflow-hidden -mt-6 relative z-10">
+      <div className="bg-white rounded-2xl shadow-lg transition-all duration-500 hover:shadow-xl h-48 group-hover:h-28 overflow-hidden -mt-6 relative z-10">
         <div className="p-4">
           {/* Manufacturer Info - Top section */}
           <div className="flex items-center space-x-3 mb-3">
