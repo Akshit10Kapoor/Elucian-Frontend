@@ -3,6 +3,7 @@ import bgImage from "../assets/bg.jpg";
 import jenny from "../assets/jenny.svg"
 import { Plus, Mic, ArrowRight, X, FileText, Trash } from "lucide-react";
 import FileUpload from "../components/FileUpload";
+import { useNavigate } from "react-router-dom";
 
 const SearchPage = () => {
   const [isUploading, setIsUploading] = useState(false);
@@ -16,10 +17,17 @@ const SearchPage = () => {
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [selectedCertifications, setSelectedCertifications] = useState([]);
   const fileInputRef = useRef(null);
+  const [desc, setDesc] = useState(null);
+  const navigate = useNavigate()
 
   const handleUploadClick = () => {
     fileInputRef.current?.click();
   };
+
+  const handleSearch = ()=> {
+    (desc && navigate("/search-result")) 
+    
+  }
 
   const handleFileSelect = (selectedFiles) => {
     if (selectedFiles && selectedFiles.length > 0) {
@@ -370,6 +378,7 @@ const SearchPage = () => {
 
             <div className="relative">
               <textarea
+                onChange={(e) => setDesc(e.target.value)}
                 placeholder="Describe your part, material, or requirement..."
                 className="w-full h-28 p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:border-purple-500 text-gray-700 placeholder-gray-400"
               />
@@ -402,7 +411,9 @@ const SearchPage = () => {
                     <Mic size={20} className="text-gray-600" />
                   </button>
 
-                  <button className="p-2 rounded-lg transition-colors bg-white border-2" style={{ borderColor: '#7636D9' }}>
+                  <button className="p-2 rounded-lg transition-colors bg-white border-2" style={{ borderColor: '#7636D9' }}
+                  onClick={handleSearch}>
+
                     <ArrowRight size={20} style={{ color: '#7636D9' }} />
                   </button>
                 </div>
